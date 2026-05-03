@@ -1196,3 +1196,63 @@
   50% { text-shadow: 0 0 16px rgba(74,222,128,0.8), 0 0 30px rgba(74,222,128,0.4); }
   100% { text-shadow: 0 0 8px rgba(74,222,128,0.4), 0 0 16px rgba(74,222,128,0.2); }
 }
+
+/* ========================================
+   SHOP UI GOD LEVEL ADDITIONS
+   ======================================== */
+
+/* Rarity border glow animations */
+.animate-rarity-common {
+  animation: rarity-common-pulse 3s ease-in-out infinite;
+}
+
+@keyframes rarity-common-pulse {
+  0%, 100% { box-shadow: inset 0 0 8px rgba(161,161,170,0.05); }
+  50% { box-shadow: inset 0 0 12px rgba(161,161,170,0.12), 0 0 8px rgba(161,161,170,0.06); }
+}
+
+.animate-rarity-rare {
+  animation: rarity-rare-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes rarity-rare-pulse {
+  0%, 100% { box-shadow: inset 0 0 10px rgba(59,130,246,0.08); }
+  50% { box-shadow: inset 0 0 16px rgba(59,130,246,0.18), 0 0 12px rgba(59,130,246,0.1); }
+}
+
+.animate-rarity-legendary {
+  animation: rarity-legendary-pulse 2s ease-in-out infinite;
+}
+
+@keyframes rarity-legendary-pulse {
+  0%, 100% { box-shadow: inset 0 0 12px rgba(245,158,11,0.1); }
+  50% { box-shadow: inset 0 0 20px rgba(245,158,11,0.25), 0 0 18px rgba(245,158,11,0.15); }
+}
+
+/* Red pulse glow for BUY button in dialog */
+.animate-pulse-glow-red {
+  animation: pulse-glow-red 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse-glow-red {
+  0%, 100% { box-shadow: 0 0 12px rgba(234,179,8,0.3); }
+  50% { box-shadow: 0 0 25px rgba(234,179,8,0.5), 0 0 40px rgba(234,179,8,0.15); }
+}
+
+/* ========================================
+   APOCALYPSE PASS & SETTINGS GOD LEVEL
+   ======================================== */
+
+/* Golden shimmer for premium upgrade button */
+@keyframes golden-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Liquid wave effect for blood progress bar leading edge */
+@keyframes liquid-wave {
+  0% { opacity: 0.3; transform: scaleX(1); }
+  50% { opacity: 0.7; transform: scaleX(1.3); }
+  100% { opacity: 0.3; transform: scaleX(1); }
+}

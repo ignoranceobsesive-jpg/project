@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '@/stores/gameStore';
 import { useEconomyStore } from '@/stores/economyStore';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 import { Coins, Play, RotateCcw, Users, ShoppingBag, Crown, Settings } from 'lucide-react';
 
 const menuItems = [
@@ -208,6 +209,18 @@ export default function MainMenu() {
             }}
           />
         ))}
+      </div>
+
+      {/* ===== GAME LOGO BACKGROUND ===== */}
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.04] z-0">
+        <Image
+          src="/images/game-logo.png"
+          alt=""
+          width={800}
+          height={600}
+          className="object-contain"
+          priority
+        />
       </div>
 
       {/* ===== BACKGROUND GRADIENT SHIFTS ===== */}

@@ -6,6 +6,8 @@ import { useGameStore, GameScene } from '@/stores/gameStore';
 import { usePlayerStore } from '@/stores/playerStore';
 import { useEffect } from 'react';
 
+import Image from 'next/image';
+
 const GameCanvas = dynamic(() => import('@/game/engine/GameCanvas'), {
   ssr: false,
   loading: () => (
@@ -15,16 +17,36 @@ const GameCanvas = dynamic(() => import('@/game/engine/GameCanvas'), {
       alignItems: 'center',
       justifyContent: 'center',
       height: '100vh',
-      backgroundColor: '#0a0a0a',
+      backgroundColor: '#050202',
       color: '#ff4400',
       fontFamily: 'monospace',
-      gap: '1rem',
+      gap: '1.5rem',
     }}>
-      <div style={{ fontSize: '1.5rem', letterSpacing: '0.3em' }}>
-        THE NOTE: APOCALYPSE
+      <Image
+        src="/images/game-logo.png"
+        alt="THE NOTE: APOCALYPSE"
+        width={400}
+        height={300}
+        className="object-contain opacity-60"
+        priority
+      />
+      <div style={{ fontSize: '0.8rem', color: '#666', letterSpacing: '0.2em' }}>
+        LOADING ENGINE...
       </div>
-      <div style={{ fontSize: '0.8rem', color: '#666' }}>
-        Loading engine...
+      <div style={{
+        width: '200px',
+        height: '2px',
+        background: '#1a0000',
+        borderRadius: '1px',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          width: '40%',
+          height: '100%',
+          background: 'linear-gradient(90deg, #4a0000, #8b0000)',
+          borderRadius: '1px',
+          animation: 'loadPulse 1.5s ease-in-out infinite',
+        }} />
       </div>
     </div>
   ),

@@ -2,7 +2,8 @@
 
 import { useMemo, useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { usePlayerStore, SURVIVORS, WEAPONS } from '@/stores/playerStore';
+import { usePlayerStore, SURVIVORS, WEAPONS, SurvivorId } from '@/stores/playerStore';
+import Image from 'next/image';
 import { useGameStore, FloorNumber } from '@/stores/gameStore';
 import { useZombieStore } from '@/stores/zombieStore';
 import { useEconomyStore } from '@/stores/economyStore';
@@ -610,8 +611,24 @@ export default function HUD() {
       {/* ── Dynamic Crosshair ── */}
       <DynamicCrosshair isMoving={isMoving} isAimingAtEnemy={false} />
 
-      {/* ── Top Left - Bio-Monitor Health + Battery ── */}
+      {/* ── Top Left - Survivor Portrait + Bio-Monitor Health + Battery ── */}
       <div className="absolute top-3 left-3 flex flex-col gap-2 w-52 sm:w-60">
+        {/* Survivor mini portrait */}
+        <div className="flex items-center gap-2 bg-black/60 px-2 py-1.5 rounded-sm border border-zinc-800/50 backdrop-blur-sm">
+          <div className="relative w-8 h-8 rounded overflow-hidden border" style={{ borderColor: survivor.color, boxShadow: `0 0 6px ${survivor.color}40` }}>
+            <Image
+              src={`/images/characters/${selectedSurvivor}.png`}
+              alt={survivor.name}
+              width={32}
+              height={32}
+              className="object-cover"
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-[10px] font-bold tracking-wider" style={{ color: survivor.color }}>{survivor.name}</span>
+            <span className="text-[8px] text-zinc-600 font-mono">{survivor.role}</span>
+          </div>
+        </div>
         <BioMonitorHealth health={health} maxHealth={maxHealth} isLowHealth={isLowHealth} />
 
         {/* Flashlight battery */}
