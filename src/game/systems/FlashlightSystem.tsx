@@ -222,7 +222,7 @@ export default function FlashlightSystem() {
 
     spotLightRef.current.color.copy(currentColor);
     spotLightRef.current.intensity = flashlightOn
-      ? 3.5 * batteryFactor * smoothFlickerRef.current
+      ? 6 * batteryFactor * smoothFlickerRef.current
       : 0;
 
     // Ambient bounce light - subtle colored light from nearby surfaces
@@ -236,7 +236,7 @@ export default function FlashlightSystem() {
       const bounceColor = currentColor.clone().lerp(new THREE.Color('#ffccaa'), 0.3);
       ambientLightRef.current.color.copy(bounceColor);
       ambientLightRef.current.intensity = flashlightOn
-        ? 0.2 * batteryFactor * smoothFlickerRef.current
+        ? 0.5 * batteryFactor * smoothFlickerRef.current
         : 0;
     }
   });
@@ -247,17 +247,17 @@ export default function FlashlightSystem() {
       <spotLight
         ref={spotLightRef}
         color={flashlightColor}
-        intensity={flashlightOn ? 3.5 : 0}
-        angle={0.35}
-        penumbra={0.6}
-        decay={2}
-        distance={35}
+        intensity={flashlightOn ? 6 : 0}
+        angle={0.4}
+        penumbra={0.5}
+        decay={1.5}
+        distance={50}
         castShadow
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
         shadow-bias={-0.0005}
         shadow-camera-near={0.5}
-        shadow-camera-far={35}
+        shadow-camera-far={50}
       />
 
       {/* Volumetric cone */}
@@ -274,8 +274,8 @@ export default function FlashlightSystem() {
       <pointLight
         ref={ambientLightRef}
         color={flashlightColor}
-        intensity={0.15}
-        distance={6}
+        intensity={0.3}
+        distance={10}
         decay={2}
       />
     </>

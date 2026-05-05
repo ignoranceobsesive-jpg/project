@@ -289,6 +289,10 @@ function ElevatorZone() {
 export default function GameplayScene() {
   return (
     <>
+      {/* Gameplay ambient fill - ensures base visibility even without flashlight */}
+      <ambientLight intensity={0.15} color="#8899aa" />
+      <hemisphereLight args={['#445566', '#221111', 0.3]} />
+      
       <PlayerController />
       <FloorRouter />
       <ZombieRenderer />

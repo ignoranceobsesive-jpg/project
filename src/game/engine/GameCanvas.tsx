@@ -48,7 +48,7 @@ function SceneLighting() {
 
   return (
     <>
-      <ambientLight intensity={isGameplay ? 0.06 : 0.1} color="#7788aa" />
+      <ambientLight intensity={isGameplay ? 0.25 : 0.15} color="#99aabb" />
       {!isGameplay && (
         <directionalLight
           position={[10, 20, 10]}
@@ -107,17 +107,17 @@ export default function GameCanvas() {
         alpha: false,
         powerPreference: 'high-performance',
         toneMapping: THREE.ACESFilmicToneMapping,
-        toneMappingExposure: 0.85,
+        toneMappingExposure: 1.2,
         outputColorSpace: THREE.SRGBColorSpace,
       }}
       style={{ width: '100%', height: '100%' }}
       onCreated={({ gl }) => {
         // Very dark, slightly red-tinted clear color for horror atmosphere
-        gl.setClearColor(new THREE.Color('#080505'));
+        gl.setClearColor(new THREE.Color('#1a1215'));
       }}
     >
       {/* Darker, more atmospheric fog - red-tinted for horror */}
-      <fog attach="fog" args={['#080505', isGameplay ? 3 : 15, isGameplay ? 30 : 50]} />
+      <fog attach="fog" args={['#1a1215', isGameplay ? 8 : 20, isGameplay ? 45 : 60]} />
 
       <Suspense fallback={<LoadingFallback />}>
         <SceneLighting />

@@ -45,7 +45,7 @@ export default function PostProcessing() {
 
   // Vignette: pulses with fear, stronger at high fear
   const vignetteDarkness = useMemo(
-    () => 0.4 + fearLevel * 0.45 + (isFlickering ? 0.15 : 0),
+    () => 0.25 + fearLevel * 0.35 + (isFlickering ? 0.1 : 0),
     [fearLevel, isFlickering]
   );
 
@@ -62,7 +62,7 @@ export default function PostProcessing() {
 
   // Noise: film grain style, stronger with fear
   const noiseOpacity = useMemo(
-    () => 0.06 + fearLevel * 0.15,
+    () => 0.03 + fearLevel * 0.1,
     [fearLevel]
   );
 
@@ -82,18 +82,18 @@ export default function PostProcessing() {
   );
 
   const hueSaturationSaturation = useMemo(
-    () => -0.1 - fearLevel * 0.3,
+    () => -0.05 - fearLevel * 0.2,
     [fearLevel]
   );
 
   // Brightness/Contrast: darken and increase contrast with fear
   const brightnessContrastBrightness = useMemo(
-    () => -0.02 - fearLevel * 0.08,
+    () => 0.03 - fearLevel * 0.06,
     [fearLevel]
   );
 
   const brightnessContrastContrast = useMemo(
-    () => 0.05 + fearLevel * 0.15,
+    () => 0.03 + fearLevel * 0.1,
     [fearLevel]
   );
 
@@ -120,7 +120,7 @@ export default function PostProcessing() {
   );
 
   const ssaoIntensity = useMemo(
-    () => 20 + fearLevel * 10,
+    () => 12 + fearLevel * 8,
     [fearLevel]
   );
 
@@ -162,7 +162,7 @@ export default function PostProcessing() {
 
       {/* ── Vignette: pulsing with fear ── */}
       <Vignette
-        offset={0.25 + fearLevel * 0.1}
+        offset={0.2 + fearLevel * 0.08}
         darkness={vignetteDarkness}
         blendFunction={BlendFunction.NORMAL}
       />
